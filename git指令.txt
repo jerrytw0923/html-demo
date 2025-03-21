@@ -70,16 +70,19 @@ git checkout master
 - git reset 83081f
 - git reset --hard 83081f
 
-
 18.加上雲端倉庫
+- git remote add origin https://github.com/jerrytw0923/html-demo.git
 
+19.推送
+- git push -u origin master
+- git push
 
-19.檢視雲端倉庫url
+20.檢視雲端倉庫url
 - git remote -v
 - origin  https://github.com/jerrytw0923/html-demo.git (fetch)
 
-
-
+21.複製專案
+- git clone https://github.com/jerrytw0923/html-demo
 
 
 
