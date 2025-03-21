@@ -84,6 +84,8 @@ git checkout master
 21.複製專案
 - git clone https://github.com/jerrytw0923/html-demo
 
+22.加入暫存區的恢復 A->U
+- git restore --staged <filename>
 
 
 ### 常用指令
