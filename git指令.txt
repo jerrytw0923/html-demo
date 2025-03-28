@@ -120,6 +120,14 @@ git checkout master
 git reset --hard HEAD~1  (HEAD~1前一個commit) 
 git reset --hard 83081f 
 
+14.git pull 
+- 將雲端版本同步本地端
+
+15.合併commit 
+- git add .
+- git commit --amend
+
+
 
 
 
