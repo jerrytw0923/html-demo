@@ -27,6 +27,11 @@
         color:white;
         border: none;
         margin-left: 0px;
+        width: 800px;       
+    }
+
+    #picture{
+        text-align:center;
     }
 
     /* # => id */
@@ -34,6 +39,7 @@
         background-color:aqua;
         width: 50%;
         height: 300px;
+        margin: 6px auto;
     }
     
     thead{
@@ -55,9 +61,19 @@
     /*thead tbody tr td */
 
     body{
+        text-align: center;
         background-color: rgb(246, 255, 215);
         font-family:"標楷體", 'Arial Narrow Bold', sans-serif;
     }
+
+    .image-style{
+       background-color: rgb(255, 255, 255); 
+       padding: 12px;
+       border: 1px solid;
+       border-radius: 6px;
+       width: 30%;
+    }
+
             
     </style>
 </head>
@@ -81,7 +97,7 @@
 
 <hr>
 <div class="title">健身的10個好處</div>
-<ol type="1">
+<ol type="1" style="text-align: left;">
 <li>增加基礎代謝率</li>  
 <li>預防疾病和提高免疫力</li>
 <li>改善心情</li>
@@ -138,6 +154,7 @@
         </tr>
     </tbody>
 </table>
+<div style="text-align: left;margin: 12px;">
 <a href="bmi.html">
 <b>計算BMI:</b>
 </a>
@@ -145,20 +162,25 @@
 
 <b>計算所需熱量:</b>
 &nbsp;因他的工作為坐辦公室，屬輕量工作，每天攝取熱量應在1300至1625大卡之間(=20~25大卡*65公斤)。
-
+</div>
 <hr>
 <div class="title">健身圖片</div>
-<!-- 將三張圖片放在同一列-->
-<img width="32%"  src="images/pic-1.jpg" alt="pic-1.jpg">
-<img width="32%" src="images/pic-2.jpg" alt="pic-2.jpg">
-<img width="32%" src="images/pic-3.jpg" alt="pic-3.jpg">
 
+<div id="picture">
+<!-- 將三張圖片放在同一列-->
+<img class="image-style" src="images/pic-1.jpg" alt="pic-1.jpg">
+<img class="image-style" src="images/pic-2.jpg" alt="pic-2.jpg">
+<img class="image-style" src="images/pic-3.jpg" alt="pic-3.jpg">
+</div>
 <hr>
+
 <div class="title">健身影片</div>
+<div>
 <!-- ctrl+/ -->
 <!-- <video controls src="video/SampleVideo_720x480_5mb.mp4"></video> -->
 <iframe width="48%" height="360" src="https://www.youtube.com/embed/L1BTJsDAWjo" title="7 分鐘居家徒手腹肌訓練【初級版】無裝備｜7 Min Standing Abs workout｜非常適合初學者入門也有效加强核心的訓練｜男生和女生都適合的健身訓練【健身運動】" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="48%" height="360" src="https://www.youtube.com/embed/LmrKejHOaG4" title="男女適用!! 20分鐘 站立式全身燃脂運動、不跳躍、不傷膝、簡單有效" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 </body>
 
 
