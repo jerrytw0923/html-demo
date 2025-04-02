@@ -144,7 +144,70 @@
     </form>
     <a href="index.html">首頁</a>
 
+    <script>
+        let x = 10;
+        let y = 20;
+        let z = x + y;
 
+        // 判斷式
+        if (x > 10) {
+
+        } else if (y > 20) {
+
+        } else {
+            console.log(x, y);
+        }
+
+        // and or not
+        x = "10";
+        y = 10;
+
+        //型態跟值都要相同
+        console.log(x === y);
+
+        // and ==> && or ==>||  not==>!
+        if (x >= 10 || y >= 30) {
+            console.log("1");
+        }
+
+        let a = false;
+        if (!a) {
+            console.log(a);
+        }
+
+        let height = prompt("請輸入身高:");
+        let weight = prompt("請輸入體重:");
+        let bmi = getBmi(height, weight);
+
+        alert("BMI:" + bmi);
+
+
+        // 函式宣告
+        function getBmi(height, weight) {
+            const bmi = weight / (height / 100) ** 2;
+            console.log(bmi.toFixed(2));
+
+            return bmi.toFixed(2);
+        }
+
+
+        // console.log(x, y, z);
+        // // const 宣告常數
+        // const pi = 3.1415926;
+        // // prompt輸入
+        // let radius = prompt("請輸入半徑:");
+        // // isNan判斷是否數值
+        // if (isNaN(radius)) {
+        //     alert("請輸入正確數值!");
+        // } else {
+        //     let area = radius * radius * pi;
+        //     const result = "半徑為:" + radius + " 面積為:" + area;
+        //     // 三種輸出
+        //     console.log(result);
+        //     document.write("<h2>" + result + "</h2>");
+        //     alert(result);
+        // }
+    </script>
 </body>
 
 </html>
