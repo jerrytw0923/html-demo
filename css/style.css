@@ -1,0 +1,29 @@
+/* 共用css區 */
+
+body {
+    text-align: center;
+    background-color: rgb(246, 255, 215);
+    font-family: "標楷體", 'Arial Narrow Bold', sans-serif;
+}
+
+.title {
+    color: blueviolet;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(255, 219, 194);
+    /* 1rem=>16px */
+    font-size: 2rem;
+    display: inline-block;
+    width: 600px;
+    margin: 10px 20px;
+    padding: 6px;
+    border: 1px solid rgb(214, 131, 131);
+    border-radius: 6px;
+}
+
+/* . => class */
+.main-title {
+    background-color: cadetblue;
+    font-size: 2.5rem;
+    color: white;
+    border: none;   
+}
