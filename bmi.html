@@ -12,6 +12,7 @@
         }
 
         form {
+            position: relative;
             width: 40%;
             background-color: rgb(156, 233, 226);
             margin: 24px auto;
@@ -63,12 +64,15 @@
         }
 
         a {
+            /* 絕對位置(相對於relative) */
+            position: absolute;
             background-color: brown;
             color: white;
             padding: 12px;
             border-radius: 6px;
             text-decoration: none;
-
+            right: 12px;
+            top: 12px;
         }
 
 
@@ -100,7 +104,6 @@
 
         #info {
             background-color: rgb(247, 191, 123);
-
         }
 
         .comment {
@@ -137,6 +140,11 @@
 
 <body>
     <div class="main-title">BMI計算機</div>
+
+    <div id="record">
+
+    </div>
+
     <form action="">
         <label for="username">姓名</label>
         <input id="username" name="username" type="text" placeholder="請輸入姓名"><br>
@@ -163,7 +171,7 @@
         </div>
 
         <button type="button" onclick="calc()">計算</button>
-
+        <a href="index.html">首頁</a>
     </form>
     <!-- 新增 id=>info -->
     <!-- 將使用者的名字跟年齡/性別/縣市一行輸出(h2標籤可) -->
@@ -171,15 +179,13 @@
 
 
     </div>
-    <div id="result">
+    <div id="result" hidden="true">
         BMI:<span class="bmi">
-
         </span>
         <p class="comment">
-
         </p>
     </div>
-    <a href="index.html">首頁</a>
+
 
     <script>
         const nameEl = document.querySelector("#username");
@@ -188,7 +194,11 @@
         const weightEl = document.querySelector("#weight");
         const countyEl = document.querySelector("#county");
 
-        //console.log(sexEl.value, countyEl.value, nameEl, ageEl, heightEl, weightEl, heightEl.value, weightEl.value);
+        //物件
+        let data = {
+            total: 0,
+            count: 0
+        }
 
         function calc() {
             let height = heightEl.value;
@@ -199,6 +209,9 @@
                 alert("請輸入正確數值!");
                 return;
             }
+
+            // 取消隱藏
+            document.querySelector("#result").hidden = false;
 
             // 取得最新的選取
             const sexEl = document.querySelector("input[name='sex']:checked");
@@ -215,6 +228,14 @@
             bmiEl.innerText = bmi;
             bmiEl.style.color = result[1];
             document.querySelector(".comment").innerText = result[0];
+
+            //紀錄每次的bmi
+            data.total += Number(bmi);
+            data.count += 1;
+
+            console.log(data);
+            let avg = (data.total / data.count).toFixed(1);
+            document.querySelector("#record").innerHTML = `紀錄人數:${data.count} 平均BMI:${avg}`;
         }
 
         function getComment(bmi) {
