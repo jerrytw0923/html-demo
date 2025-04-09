@@ -88,6 +88,31 @@
             color: yellow;
         }
 
+        #result {
+            font-size: 2rem;
+            font-weight: bold;
+            background-color: rgb(197, 245, 213);
+            width: 600px;
+            margin: 24px auto;
+            padding: 12px 24px;
+            border: 1px dotted darkblue;
+        }
+
+        #info {
+            background-color: rgb(247, 191, 123);
+
+        }
+
+        .comment {
+            font-size: 1.5rem;
+            font-weight: 200;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .bmi {
+            font-size: 2.5rem;
+        }
+
         @media screen and (max-width:1024px) {
             form {
                 width: 60%;
@@ -108,8 +133,6 @@
         }
     </style>
 
-
-
 </head>
 
 <body>
@@ -125,8 +148,8 @@
         <input id="weight" name="weight" type="number" step="0.1"><br>
 
         <div class="panel1">
-            <input type="radio" name="sex" id="male" checked>男
-            <input type="radio" name="sex" id="female"> 女
+            <input type="radio" name="sex" id="male" checked value="男生">男
+            <input type="radio" name="sex" id="female" value="女生">女
 
             <label for="county">居住縣市</label>
             <select name="county" id="county">
@@ -142,11 +165,19 @@
         <button type="button" onclick="calc()">計算</button>
 
     </form>
+    <!-- 新增 id=>info -->
+    <!-- 將使用者的名字跟年齡/性別/縣市一行輸出(h2標籤可) -->
+    <div id="info">
+
+
+    </div>
     <div id="result">
+        BMI:<span class="bmi">
 
+        </span>
+        <p class="comment">
 
-
-
+        </p>
     </div>
     <a href="index.html">首頁</a>
 
@@ -156,21 +187,54 @@
         const heightEl = document.querySelector("#height");
         const weightEl = document.querySelector("#weight");
         const countyEl = document.querySelector("#county");
-        const sexEl = document.querySelector("input[name='sex']:checked");
 
-        console.log(sexEl, countyEl.value, nameEl, ageEl, heightEl, weightEl, heightEl.value, weightEl.value);
-
-
+        //console.log(sexEl.value, countyEl.value, nameEl, ageEl, heightEl, weightEl, heightEl.value, weightEl.value);
 
         function calc() {
             let height = heightEl.value;
             let weight = weightEl.value;
+            // 判斷height 跟 weight 要大於0跟是數值not isNan
+            // and ==> &&   or ==> ||
+            if (height <= 0 || weight <= 0) {
+                alert("請輸入正確數值!");
+                return;
+            }
+
+            // 取得最新的選取
+            const sexEl = document.querySelector("input[name='sex']:checked");
+            let userInfo = `${nameEl.value} 年齡:${ageEl.value} 姓別:${sexEl.value} 縣市:${countyEl.value}`;
+            console.log(userInfo);
+            document.querySelector("#info").innerHTML = `<h2>${userInfo}</h2>`;
 
             let bmi = getBmi(height, weight);
-            console.log(bmi);
-            document.querySelector("#result").innerHTML = `<h1>BMI:${bmi}</h1>`;
+            let result = getComment(bmi);
 
-            "<h1>BMI:" + bmi + "</h1>";
+            console.log(bmi, result[0], result[1]);
+
+            const bmiEl = document.querySelector(".bmi");
+            bmiEl.innerText = bmi;
+            bmiEl.style.color = result[1];
+            document.querySelector(".comment").innerText = result[0];
+        }
+
+        function getComment(bmi) {
+            let comment, color;
+            if (bmi < 18.5) {
+                comment = "「體重過輕」，需要多運動，均衡飲食，以增加體能，維持健康！";
+                color = "#1e90ff";
+
+            } else if (bmi < 24) {
+                comment = "恭喜！「健康體重」，要繼續保持！";
+                color = "green";
+            } else if (bmi < 27) {
+                comment = "「體重過重」了，要小心囉，趕快力行「健康體重管理」！";
+                color = "orange";
+            } else {
+                comment = "啊～「肥胖」，需要立刻力行「健康體重管理」囉！";
+                color = "red";
+            }
+
+            return [comment, color];
         }
 
 
