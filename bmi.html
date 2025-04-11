@@ -106,6 +106,11 @@
             background-color: rgb(247, 191, 123);
         }
 
+        #record {
+            font-size: 32px;
+            margin-top: 24px;
+        }
+
         .comment {
             font-size: 1.5rem;
             font-weight: 200;
@@ -124,15 +129,27 @@
         }
 
         @media screen and (max-width:600px) {
+            .main-title {
+                color: yellow;
+            }
+
             form {
                 width: 80%;
             }
 
-            .main-title {
-                background-color: transparent;
-                color: black;
+            #record {
+                font-size: 24px;
             }
 
+            #result {
+
+                font-size: 1rem;
+                width: 400px;
+                margin: 12px auto;
+                padding: 6px 12px;
+                border: 1px dotted darkblue;
+
+            }
         }
     </style>
 
@@ -140,7 +157,6 @@
 
 <body>
     <div class="main-title">BMI計算機</div>
-
     <div id="record">
 
     </div>
@@ -171,6 +187,8 @@
         </div>
 
         <button type="button" onclick="calc()">計算</button>
+        <button type="button" style="background-color:orange;color:black" id="deleteRecordBtn">刪除紀錄</button>
+
         <a href="index.html">首頁</a>
     </form>
     <!-- 新增 id=>info -->
@@ -185,20 +203,44 @@
         <p class="comment">
         </p>
     </div>
-
-
     <script>
         const nameEl = document.querySelector("#username");
         const ageEl = document.querySelector("#age");
         const heightEl = document.querySelector("#height");
         const weightEl = document.querySelector("#weight");
         const countyEl = document.querySelector("#county");
+        const deleteRecordBtnEl = document.querySelector("#deleteRecordBtn");
+
+        console.log(deleteRecordBtnEl);
+
+        deleteRecordBtnEl.addEventListener("click", function () {
+            localStorage.removeItem("record");
+            //刷新頁面
+            //window.location.href = "";
+            //清除資料
+            data.total = 0;
+            data.count = 0;
+            document.querySelector("#record").innerHTML = "";
+        });
+
 
         //物件
         let data = {
             total: 0,
             count: 0
         }
+
+        //將字串轉成物件
+        record = JSON.parse(localStorage.getItem("record"));
+        if (record) {
+            data = record;
+            //加入顯示紀錄動作
+            let avg = (data.total / data.count).toFixed(1);
+            document.querySelector("#record").innerHTML = `紀錄人數:${data.count} 平均BMI:${avg}`;
+        }
+
+        console.log(data);
+
 
         function calc() {
             let height = heightEl.value;
@@ -236,6 +278,10 @@
             console.log(data);
             let avg = (data.total / data.count).toFixed(1);
             document.querySelector("#record").innerHTML = `紀錄人數:${data.count} 平均BMI:${avg}`;
+
+            //本地網頁儲存(物件轉換成字串)
+            localStorage.setItem("record", JSON.stringify(data));
+
         }
 
         function getComment(bmi) {
