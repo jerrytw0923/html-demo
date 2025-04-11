@@ -6,170 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI計算機</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bmi.css">
     <style>
-        .main-title {
-            color: rgb(255, 255, 255);
-        }
 
-        form {
-            position: relative;
-            width: 40%;
-            background-color: rgb(156, 233, 226);
-            margin: 24px auto;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 10px 10px 5px rgb(75, 83, 85, 0.8);
-        }
-
-        input {
-            margin: 6px 0px;
-            font-size: 20px;
-            text-align: center;
-            border-radius: 6px;
-        }
-
-        label {
-            font-size: 20px;
-            text-shadow: 1px 1px 2px;
-        }
-
-        select {
-            font-size: 16px;
-        }
-
-        /* label文字大小 */
-        /* 性別/居住縣市 使用div */
-        .panel1 {
-            background-color: rgb(195, 227, 255);
-            padding: 6px;
-            border: 2px dotted pink;
-            margin: 6px;
-
-        }
-
-        button {
-            margin-top: 1rem;
-            width: 120px;
-            height: 35px;
-            background-color: rgb(124, 179, 124);
-            border: none;
-            font-size: 16px;
-            border-radius: 6px;
-            color: white;
-        }
-
-        button:hover {
-            background-color: cadetblue;
-            cursor: pointer;
-        }
-
-        a {
-            /* 絕對位置(相對於relative) */
-            position: absolute;
-            background-color: brown;
-            color: white;
-            padding: 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            right: 12px;
-            top: 12px;
-        }
-
-
-        .home-link {
-            position: absolute;
-            bottom: 16px;
-            right: 16px;
-            background-color: brown;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        a:hover {
-            color: yellow;
-        }
-
-        #result {
-            font-size: 2rem;
-            font-weight: bold;
-            background-color: rgb(197, 245, 213);
-            width: 600px;
-            margin: 24px auto;
-            padding: 12px 24px;
-            border: 1px dotted darkblue;
-        }
-
-        #info {
-            background-color: rgb(247, 191, 123);
-        }
-
-        #record {
-            font-size: 32px;
-            margin-top: 24px;
-        }
-
-        .comment {
-            font-size: 1.5rem;
-            font-weight: 200;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-
-        .bmi {
-            font-size: 2.5rem;
-        }
-
-
-        table {
-            background-color: rgb(220, 255, 243);
-            margin: 0 auto;
-            width: 600px;
-            font-family: 'Courier New', Courier, monospace;
-            border-collapse: collapse;
-        }
-
-        th {
-
-            background-color: aqua;
-        }
-
-        @media screen and (max-width:1024px) {
-            form {
-                width: 60%;
-            }
-
-        }
-
-        @media screen and (max-width:600px) {
-            .main-title {
-                color: yellow;
-            }
-
-            form {
-                width: 80%;
-            }
-
-            #record {
-                font-size: 24px;
-            }
-
-            #result {
-                font-size: 1rem;
-                width: 400px;
-                margin: 12px auto;
-                padding: 6px 12px;
-                border: 1px dotted darkblue;
-
-            }
-
-            table {
-                width: 450px;
-            }
-        }
     </style>
-
+    <script src="js/bmi.js"></script>
 </head>
 
 <body>
@@ -177,7 +18,6 @@
     <div id="record">
 
     </div>
-
     <form action="">
         <label for="username">姓名</label>
         <input id="username" name="username" type="text" placeholder="請輸入姓名"><br>
@@ -234,6 +74,10 @@
         const deleteRecordBtnEl = document.querySelector("#deleteRecordBtn");
 
         deleteRecordBtnEl.addEventListener("click", function () {
+            if (!confirm("是否確定刪除?!")) {
+                return;
+            }
+
             localStorage.removeItem("record");
             localStorage.removeItem("datas");
             //刷新頁面
@@ -263,11 +107,9 @@
             document.querySelector("#record").innerHTML = `紀錄人數:${data.count} 平均BMI:${avg}`;
         }
 
-
         if (datas.length > 0) {
             renderTable(datas);
         }
-
 
         function addRow(data) {
             return `
@@ -310,15 +152,9 @@
             </table>
             `
 
-            console.log(tableHtml);
-
+            //console.log(tableHtml);
             document.querySelector("#tableRecord").innerHTML = tableHtml;
-
         }
-
-
-
-
 
         function calc() {
             // 取得最新的選取           
@@ -374,38 +210,8 @@
             datas.push(person);
             //儲存datas
             localStorage.setItem("datas", JSON.stringify(datas));
-
             renderTable(datas);
         }
-
-        function getComment(bmi) {
-            let comment, color;
-            if (bmi < 18.5) {
-                comment = "「體重過輕」，需要多運動，均衡飲食，以增加體能，維持健康！";
-                color = "#1e90ff";
-
-            } else if (bmi < 24) {
-                comment = "恭喜！「健康體重」，要繼續保持！";
-                color = "green";
-            } else if (bmi < 27) {
-                comment = "「體重過重」了，要小心囉，趕快力行「健康體重管理」！";
-                color = "orange";
-            } else {
-                comment = "啊～「肥胖」，需要立刻力行「健康體重管理」囉！";
-                color = "red";
-            }
-
-            return [comment, color];
-        }
-
-
-        // 函式宣告
-        function getBmi(height, weight) {
-            const bmi = weight / (height / 100) ** 2;
-            return bmi.toFixed(2);
-        }
-
-
 
     </script>
 </body>
