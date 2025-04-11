@@ -121,6 +121,20 @@
             font-size: 2.5rem;
         }
 
+
+        table {
+            background-color: rgb(220, 255, 243);
+            margin: 0 auto;
+            width: 600px;
+            font-family: 'Courier New', Courier, monospace;
+            border-collapse: collapse;
+        }
+
+        th {
+
+            background-color: aqua;
+        }
+
         @media screen and (max-width:1024px) {
             form {
                 width: 60%;
@@ -142,13 +156,16 @@
             }
 
             #result {
-
                 font-size: 1rem;
                 width: 400px;
                 margin: 12px auto;
                 padding: 6px 12px;
                 border: 1px dotted darkblue;
 
+            }
+
+            table {
+                width: 450px;
             }
         }
     </style>
@@ -203,6 +220,11 @@
         <p class="comment">
         </p>
     </div>
+
+    <div id="tableRecord">
+
+    </div>
+
     <script>
         const nameEl = document.querySelector("#username");
         const ageEl = document.querySelector("#age");
@@ -211,18 +233,18 @@
         const countyEl = document.querySelector("#county");
         const deleteRecordBtnEl = document.querySelector("#deleteRecordBtn");
 
-        console.log(deleteRecordBtnEl);
-
         deleteRecordBtnEl.addEventListener("click", function () {
             localStorage.removeItem("record");
+            localStorage.removeItem("datas");
             //刷新頁面
             //window.location.href = "";
             //清除資料
             data.total = 0;
             data.count = 0;
+            datas = [];
             document.querySelector("#record").innerHTML = "";
+            document.querySelector("#tableRecord").innerHTML = "";
         });
-
 
         //物件
         let data = {
@@ -231,8 +253,7 @@
         }
 
         //陣列
-        let datas = [];
-
+        let datas = JSON.parse(localStorage.getItem("datas")) || [];
         //將字串轉成物件
         record = JSON.parse(localStorage.getItem("record"));
         if (record) {
@@ -242,7 +263,61 @@
             document.querySelector("#record").innerHTML = `紀錄人數:${data.count} 平均BMI:${avg}`;
         }
 
-        console.log(data);
+
+        if (datas.length > 0) {
+            renderTable(datas);
+        }
+
+
+        function addRow(data) {
+            return `
+            <tr>   
+                <td>${data.name}</td>
+                <td>${data.county}</td>
+                <td>${data.age}</td>
+                <td>${data.sex}</td>
+                <td>${data.height}</td>
+                <td>${data.weight}</td>
+                <td>${data.bmi}</td>
+            </tr>
+            `;
+        }
+
+        function renderTable(datas) {
+            tableData = "";
+            for (let i = 0; i < datas.length; i++) {
+                console.log(i + 1, datas[i]);
+                tableData += addRow(datas[i]);
+            }
+
+            let tableHtml = `
+              <table border="1px" >
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>縣市</th>
+                        <th>年齡</th>
+                        <th>性別</th>
+                        <th>身高</th>
+                        <th>體重</th>
+                        <th>BMI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                ${tableData}
+                </tbody>           
+
+            </table>
+            `
+
+            console.log(tableHtml);
+
+            document.querySelector("#tableRecord").innerHTML = tableHtml;
+
+        }
+
+
+
 
 
         function calc() {
@@ -262,7 +337,6 @@
             }
             // 取消隱藏
             document.querySelector("#result").hidden = false;
-
             let userInfo = `${nameEl.value} 年齡:${ageEl.value} 姓別:${sexEl.value} 縣市:${countyEl.value}`;
             console.log(userInfo);
             document.querySelector("#info").innerHTML = `<h2>${userInfo}</h2>`;
@@ -284,10 +358,8 @@
             console.log(data);
             let avg = (data.total / data.count).toFixed(1);
             document.querySelector("#record").innerHTML = `紀錄人數:${data.count} 平均BMI:${avg}`;
-
             //本地網頁儲存(物件轉換成字串)
             localStorage.setItem("record", JSON.stringify(data));
-
             //儲存單筆資料
             let person = {
                 name: name,
@@ -299,9 +371,11 @@
                 bmi: bmi
             }
 
-
             datas.push(person);
-            console.log(datas);
+            //儲存datas
+            localStorage.setItem("datas", JSON.stringify(datas));
+
+            renderTable(datas);
         }
 
         function getComment(bmi) {
