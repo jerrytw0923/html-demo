@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>首頁</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- 影響整個網頁css設計 -->
+    <style>
+        #picture {
+            text-align: center;
+        }
+
+        /* # => id */
+        #table-bmi {
+            background-color: aqua;
+            width: 50%;
+            height: 300px;
+            margin: 6px auto;
+        }
+
+        thead {
+            background-color: aquamarine;
+        }
+
+        tbody {
+            background-color: tomato;
+        }
+
+        tr {
+            color: white;
+        }
+
+        thead tr {
+            color: black;
+        }
+
+        /*thead tbody tr td */
+
+
+
+        .image-style {
+            background-color: rgb(255, 255, 255);
+            padding: 12px;
+            border: 1px solid;
+            border-radius: 6px;
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a target="_blank"
+        href="https://zh.freepik.com/%E5%85%8D%E8%B2%BB%E7%9F%A2%E9%87%8F/fitness-gym-training-twitch-banner_58556371.htm">
+
+        <img width="100%"
+            src="https://img.freepik.com/free-vector/fitness-gym-training-twitch-banner_23-2150681508.jpg?t=st=1742559566~exp=1742563166~hmac=9a8dfeef487474ff6b4939df0d78e3ada43d0812121fa8d78db6867dc2412b45&w=900"
+            alt="">
+
+    </a>
+    <div class="main-title title">我愛健身網站</div>
+    <h3>何謂健身?<br>
+        健身，英文稱為workout，健身這兩個字拆開來的意思就是健康身體，通過各種運動方式或方法來增強力量、增加肌肉量、柔韌性、耐力，以及提高協調和控制身體各部分的能力來使我們的身體更強健。</h3>
+    <p>
+        除了塑造好身材，透過健身可以刺激我們身體的肌肉，再搭配飲食的控制，這能大大幫助我們的肌肉量增加，
+        以及讓我們的肌肉更加的結實。
+        如果你對健身仍然保持著懷疑的態度，那你大可以去看看你喜歡的健身老戲骨幹，他們是如何做到年過50/60歲，依舊在
+        舞臺上或者是電影螢幕上綻放光彩。答案就是<b>堅持運動健身!</b>
+    </p>
+
+    <hr>
+    <div class="title">健身的10個好處</div>
+    <ol type="1" style="text-align: left;">
+        <li>增加基礎代謝率</li>
+        <li>預防疾病和提高免疫力</li>
+        <li>改善心情</li>
+        <li>改善睡眠</li>
+        <li>增加自信</li>
+        <li>增強記憶力</li>
+        <li>增強心肺能力</li>
+        <li>提升睡眠品質</li>
+        <li>釋放工作的壓力</li>
+        <li>增加肌肉助於減肥</li>
+    </ol>
+    <hr>
+    <div class="title">好文章連結</div>
+    <li><a target="_blank" href="https://www.peeta.tw/weight-loss/intermittent-fasting/">間歇性斷食法完整攻略</a>
+    </li>
+    <li><a target="_blank" href="https://www.peeta.tw/ketogenic/what-is-ketogenic-diet/">什麼是生酮飲食？</a>
+    </li>
+    <li>
+        <a target="_blank" href="https://www.peeta.tw/weight-loss/fat-loss-diet/">完整的減肥攻略大法</a>
+    </li>
+    <li>
+        <a target="_blank" href="https://www.peeta.tw/weight-loss/yo-yo-effect/">溜溜球效應！如何不再越減越肥？</a>
+    </li>
+
+    <hr>
+    <div class="title">一天所需卡路里</div>
+    <table id="table-bmi" border="5">
+        <thead>
+            <tr>
+                <th>每天活動量</th>
+                <th>體重過輕者所需熱量</th>
+                <th>體重正常者所需熱量</th>
+                <th>體重過重、肥胖者所需熱量</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>輕度工作</td>
+                <td>35大卡 X 目前體重（公斤）</td>
+                <td>30大卡 X 目前體重（公斤）</td>
+                <td>20~25大卡 X 目前體重（公斤）</td>
+            </tr>
+            <tr>
+                <td>中度工作</td>
+                <td>40大卡 X 目前體重（公斤）</td>
+                <td>35大卡 X 目前體重（公斤）</td>
+                <td>30大卡 X 目前體重（公斤）</td>
+            </tr>
+            <tr>
+                <td>重度工作</td>
+                <td>45大卡 X 目前體重（公斤）</td>
+                <td>40大卡 X 目前體重（公斤）</td>
+                <td>35大卡 X 目前體重（公斤）</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align: left;margin: 12px;">
+        <a href="bmi.html">
+            <b>計算BMI:</b>
+        </a>
+        &nbsp; 一位民眾身高160公分，體重65公斤，BMI25.4kg/m2(=65÷1.6÷1.6)，體重屬於「過重」。<br>
+
+        <b>計算所需熱量:</b>
+        &nbsp;因他的工作為坐辦公室，屬輕量工作，每天攝取熱量應在1300至1625大卡之間(=20~25大卡*65公斤)。
+    </div>
+    <hr>
+    <div class="title">健身圖片</div>
+
+    <div id="picture">
+        <!-- 將三張圖片放在同一列-->
+        <img class="image-style" src="images/pic-1.jpg" alt="pic-1.jpg">
+        <img class="image-style" src="images/pic-2.jpg" alt="pic-2.jpg">
+        <img class="image-style" src="images/pic-3.jpg" alt="pic-3.jpg">
+    </div>
+    <hr>
+
+    <div class="title">健身影片</div>
+    <div>
+        <!-- ctrl+/ -->
+        <!-- <video controls src="video/SampleVideo_720x480_5mb.mp4"></video> -->
+        <iframe width="48%" height="360" src="https://www.youtube.com/embed/L1BTJsDAWjo"
+            title="7 分鐘居家徒手腹肌訓練【初級版】無裝備｜7 Min Standing Abs workout｜非常適合初學者入門也有效加强核心的訓練｜男生和女生都適合的健身訓練【健身運動】"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="48%" height="360" src="https://www.youtube.com/embed/LmrKejHOaG4"
+            title="男女適用!! 20分鐘 站立式全身燃脂運動、不跳躍、不傷膝、簡單有效" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</body>
+
+
+</html>

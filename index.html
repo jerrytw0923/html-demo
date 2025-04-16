@@ -3,168 +3,250 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>首頁</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI計算機</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- 影響整個網頁css設計 -->
+    <link rel="stylesheet" href="css/bmi.css">
     <style>
-        #picture {
-            text-align: center;
-        }
 
-        /* # => id */
-        #table-bmi {
-            background-color: aqua;
-            width: 50%;
-            height: 300px;
-            margin: 6px auto;
-        }
-
-        thead {
-            background-color: aquamarine;
-        }
-
-        tbody {
-            background-color: tomato;
-        }
-
-        tr {
-            color: white;
-        }
-
-        thead tr {
-            color: black;
-        }
-
-        /*thead tbody tr td */
-
-
-
-        .image-style {
-            background-color: rgb(255, 255, 255);
-            padding: 12px;
-            border: 1px solid;
-            border-radius: 6px;
-            width: 30%;
-        }
     </style>
+    <script src="js/bmi.js"></script>
 </head>
 
 <body>
+    <div class="main-title">BMI計算機</div>
+    <div id="record">
 
-    <a target="_blank"
-        href="https://zh.freepik.com/%E5%85%8D%E8%B2%BB%E7%9F%A2%E9%87%8F/fitness-gym-training-twitch-banner_58556371.htm">
-
-        <img width="100%"
-            src="https://img.freepik.com/free-vector/fitness-gym-training-twitch-banner_23-2150681508.jpg?t=st=1742559566~exp=1742563166~hmac=9a8dfeef487474ff6b4939df0d78e3ada43d0812121fa8d78db6867dc2412b45&w=900"
-            alt="">
-
-    </a>
-    <div class="main-title title">我愛健身網站</div>
-    <h3>何謂健身?<br>
-        健身，英文稱為workout，健身這兩個字拆開來的意思就是健康身體，通過各種運動方式或方法來增強力量、增加肌肉量、柔韌性、耐力，以及提高協調和控制身體各部分的能力來使我們的身體更強健。</h3>
-    <p>
-        除了塑造好身材，透過健身可以刺激我們身體的肌肉，再搭配飲食的控制，這能大大幫助我們的肌肉量增加，
-        以及讓我們的肌肉更加的結實。
-        如果你對健身仍然保持著懷疑的態度，那你大可以去看看你喜歡的健身老戲骨幹，他們是如何做到年過50/60歲，依舊在
-        舞臺上或者是電影螢幕上綻放光彩。答案就是<b>堅持運動健身!</b>
-    </p>
-
-    <hr>
-    <div class="title">健身的10個好處</div>
-    <ol type="1" style="text-align: left;">
-        <li>增加基礎代謝率</li>
-        <li>預防疾病和提高免疫力</li>
-        <li>改善心情</li>
-        <li>改善睡眠</li>
-        <li>增加自信</li>
-        <li>增強記憶力</li>
-        <li>增強心肺能力</li>
-        <li>提升睡眠品質</li>
-        <li>釋放工作的壓力</li>
-        <li>增加肌肉助於減肥</li>
-    </ol>
-    <hr>
-    <div class="title">好文章連結</div>
-    <li><a target="_blank" href="https://www.peeta.tw/weight-loss/intermittent-fasting/">間歇性斷食法完整攻略</a>
-    </li>
-    <li><a target="_blank" href="https://www.peeta.tw/ketogenic/what-is-ketogenic-diet/">什麼是生酮飲食？</a>
-    </li>
-    <li>
-        <a target="_blank" href="https://www.peeta.tw/weight-loss/fat-loss-diet/">完整的減肥攻略大法</a>
-    </li>
-    <li>
-        <a target="_blank" href="https://www.peeta.tw/weight-loss/yo-yo-effect/">溜溜球效應！如何不再越減越肥？</a>
-    </li>
-
-    <hr>
-    <div class="title">一天所需卡路里</div>
-    <table id="table-bmi" border="5">
-        <thead>
-            <tr>
-                <th>每天活動量</th>
-                <th>體重過輕者所需熱量</th>
-                <th>體重正常者所需熱量</th>
-                <th>體重過重、肥胖者所需熱量</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>輕度工作</td>
-                <td>35大卡 X 目前體重（公斤）</td>
-                <td>30大卡 X 目前體重（公斤）</td>
-                <td>20~25大卡 X 目前體重（公斤）</td>
-            </tr>
-            <tr>
-                <td>中度工作</td>
-                <td>40大卡 X 目前體重（公斤）</td>
-                <td>35大卡 X 目前體重（公斤）</td>
-                <td>30大卡 X 目前體重（公斤）</td>
-            </tr>
-            <tr>
-                <td>重度工作</td>
-                <td>45大卡 X 目前體重（公斤）</td>
-                <td>40大卡 X 目前體重（公斤）</td>
-                <td>35大卡 X 目前體重（公斤）</td>
-            </tr>
-        </tbody>
-    </table>
-    <div style="text-align: left;margin: 12px;">
-        <a href="bmi.html">
-            <b>計算BMI:</b>
-        </a>
-        &nbsp; 一位民眾身高160公分，體重65公斤，BMI25.4kg/m2(=65÷1.6÷1.6)，體重屬於「過重」。<br>
-
-        <b>計算所需熱量:</b>
-        &nbsp;因他的工作為坐辦公室，屬輕量工作，每天攝取熱量應在1300至1625大卡之間(=20~25大卡*65公斤)。
     </div>
-    <hr>
-    <div class="title">健身圖片</div>
+    <form action="">
+        <label for="username">姓名</label>
+        <input id="username" name="username" type="text" placeholder="請輸入姓名"><br>
+        <label for="age">年齡</label>
+        <input id="age" name="age" type="number" placeholder="18"><br>
+        <label for="height">身高</label>
+        <input id="height" name="height" type="number" step="0.1" value="178.5"><br>
+        <label for="weight">體重</label>
+        <input id="weight" name="weight" type="number" step="0.1"><br>
 
-    <div id="picture">
-        <!-- 將三張圖片放在同一列-->
-        <img class="image-style" src="images/pic-1.jpg" alt="pic-1.jpg">
-        <img class="image-style" src="images/pic-2.jpg" alt="pic-2.jpg">
-        <img class="image-style" src="images/pic-3.jpg" alt="pic-3.jpg">
-    </div>
-    <hr>
+        <div class="panel1">
+            <input type="radio" name="sex" id="male" checked value="男生">男
+            <input type="radio" name="sex" id="female" value="女生">女
 
-    <div class="title">健身影片</div>
-    <div>
-        <!-- ctrl+/ -->
-        <!-- <video controls src="video/SampleVideo_720x480_5mb.mp4"></video> -->
-        <iframe width="48%" height="360" src="https://www.youtube.com/embed/L1BTJsDAWjo"
-            title="7 分鐘居家徒手腹肌訓練【初級版】無裝備｜7 Min Standing Abs workout｜非常適合初學者入門也有效加强核心的訓練｜男生和女生都適合的健身訓練【健身運動】"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="48%" height="360" src="https://www.youtube.com/embed/LmrKejHOaG4"
-            title="男女適用!! 20分鐘 站立式全身燃脂運動、不跳躍、不傷膝、簡單有效" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <label for="county">居住縣市</label>
+            <select name="county" id="county">
+                <option value="台北市">台北市</option>
+                <option value="新北市">新北市</option>
+                <option value="桃園市">桃園市</option>
+                <option value="台中市">台中市</option>
+                <option value="台南市">台南市</option>
+                <option value="高雄市">高雄市</option>
+            </select>
+        </div>
+
+        <button type="button" onclick="calc()">計算</button>
+        <button type="button" style="background-color:orange;color:black" id="deleteRecordBtn">刪除紀錄</button>
+        <button type="button" style="background-color:rgb(74, 35, 163);" onclick="save()">儲存紀錄</button>
+
+        <a href="index.html">首頁</a>
+    </form>
+    <!-- 新增 id=>info -->
+    <!-- 將使用者的名字跟年齡/性別/縣市一行輸出(h2標籤可) -->
+    <div id="info">
+
+
     </div>
+    <div id="result" hidden="true">
+        BMI:<span class="bmi">
+        </span>
+        <p class="comment">
+        </p>
+    </div>
+
+    <div id="tableRecord">
+
+    </div>
+
+    <script>
+        const nameEl = document.querySelector("#username");
+        const ageEl = document.querySelector("#age");
+        const heightEl = document.querySelector("#height");
+        const weightEl = document.querySelector("#weight");
+        const countyEl = document.querySelector("#county");
+        const deleteRecordBtnEl = document.querySelector("#deleteRecordBtn");
+
+        function save() {
+            //判斷是否有紀錄
+            let datas = JSON.parse(localStorage.getItem("datas"));
+            console.log(datas);
+
+            if (datas == null || datas.length == 0) {
+                alert("目前無紀錄!");
+                return;
+            }
+
+            //儲存JSON格式
+            let jsonStr = JSON.stringify(datas, null, 2);
+            console.log(jsonStr);
+
+            //產生二進制物件
+            const blobData = new Blob([jsonStr], { type: "application/json" });
+            console.log(blobData);
+            const url = URL.createObjectURL(blobData);
+            console.log(url);
+
+            // 產生一個超連結
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "records.json";
+            document.body.appendChild(a);
+            //a.text = "download";
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+
+        deleteRecordBtnEl.addEventListener("click", function () {
+            if (!confirm("是否確定刪除?!")) {
+                return;
+            }
+
+            localStorage.removeItem("record");
+            localStorage.removeItem("datas");
+            //刷新頁面
+            //window.location.href = "";
+            //清除資料
+            data.total = 0;
+            data.count = 0;
+            datas = [];
+            document.querySelector("#record").innerHTML = "";
+            document.querySelector("#tableRecord").innerHTML = "";
+        });
+
+        //物件
+        let data = {
+            total: 0,
+            count: 0
+        }
+
+        //陣列
+        let datas = JSON.parse(localStorage.getItem("datas")) || [];
+        //將字串轉成物件
+        record = JSON.parse(localStorage.getItem("record"));
+        if (record) {
+            data = record;
+            //加入顯示紀錄動作
+            let avg = (data.total / data.count).toFixed(1);
+            document.querySelector("#record").innerHTML = `紀錄人數:${data.count} 平均BMI:${avg}`;
+        }
+
+        if (datas.length > 0) {
+            renderTable(datas);
+        }
+
+        function addRow(data) {
+            return `
+            <tr>   
+                <td>${data.name}</td>
+                <td>${data.county}</td>
+                <td>${data.age}</td>
+                <td>${data.sex}</td>
+                <td>${data.height}</td>
+                <td>${data.weight}</td>
+                <td>${data.bmi}</td>
+            </tr>
+            `;
+        }
+
+        function renderTable(datas) {
+            tableData = "";
+            for (let i = 0; i < datas.length; i++) {
+                console.log(i + 1, datas[i]);
+                tableData += addRow(datas[i]);
+            }
+
+            let tableHtml = `
+              <table border="1px" >
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>縣市</th>
+                        <th>年齡</th>
+                        <th>性別</th>
+                        <th>身高</th>
+                        <th>體重</th>
+                        <th>BMI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                ${tableData}
+                </tbody>           
+
+            </table>
+            `
+
+            //console.log(tableHtml);
+            document.querySelector("#tableRecord").innerHTML = tableHtml;
+        }
+
+        function calc() {
+            // 取得最新的選取           
+            const sexEl = document.querySelector("input[name='sex']:checked");
+            let height = heightEl.value;
+            let weight = weightEl.value;
+            let name = nameEl.value;
+            let age = ageEl.value;
+            let sex = sexEl.value;
+            let county = countyEl.value;
+            // 判斷height 跟 weight 要大於0跟是數值not isNan
+            // and ==> &&   or ==> ||
+            if (height <= 0 || weight <= 0) {
+                alert("請輸入正確數值!");
+                return;
+            }
+            // 取消隱藏
+            document.querySelector("#result").hidden = false;
+            let userInfo = `${nameEl.value} 年齡:${ageEl.value} 姓別:${sexEl.value} 縣市:${countyEl.value}`;
+            console.log(userInfo);
+            document.querySelector("#info").innerHTML = `<h2>${userInfo}</h2>`;
+
+            let bmi = getBmi(height, weight);
+            let result = getComment(bmi);
+
+            console.log(bmi, result[0], result[1]);
+
+            const bmiEl = document.querySelector(".bmi");
+            bmiEl.innerText = bmi;
+            bmiEl.style.color = result[1];
+            document.querySelector(".comment").innerText = result[0];
+
+            //紀錄每次的bmi
+            data.total += Number(bmi);
+            data.count += 1;
+
+            console.log(data);
+            let avg = (data.total / data.count).toFixed(1);
+            document.querySelector("#record").innerHTML = `紀錄人數:${data.count} 平均BMI:${avg}`;
+            //本地網頁儲存(物件轉換成字串)
+            localStorage.setItem("record", JSON.stringify(data));
+            //儲存單筆資料
+            let person = {
+                name: name,
+                age: age,
+                sex: sex,
+                county: county,
+                height: height,
+                weight: weight,
+                bmi: bmi
+            }
+
+            datas.push(person);
+            //儲存datas
+            localStorage.setItem("datas", JSON.stringify(datas));
+            renderTable(datas);
+        }
+
+    </script>
 </body>
-
 
 </html>
