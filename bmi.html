@@ -45,6 +45,7 @@
 
         <button type="button" onclick="calc()">計算</button>
         <button type="button" style="background-color:orange;color:black" id="deleteRecordBtn">刪除紀錄</button>
+        <button type="button" style="background-color:rgb(74, 35, 163);" onclick="save()">儲存紀錄</button>
 
         <a href="index.html">首頁</a>
     </form>
@@ -72,6 +73,38 @@
         const weightEl = document.querySelector("#weight");
         const countyEl = document.querySelector("#county");
         const deleteRecordBtnEl = document.querySelector("#deleteRecordBtn");
+
+        function save() {
+            //判斷是否有紀錄
+            let datas = JSON.parse(localStorage.getItem("datas"));
+            console.log(datas);
+
+            if (datas == null || datas.length == 0) {
+                alert("目前無紀錄!");
+                return;
+            }
+
+            //儲存JSON格式
+            let jsonStr = JSON.stringify(datas);
+            console.log(jsonStr);
+
+            //產生二進制物件
+            const blobData = new Blob([jsonStr], { type: "application/json" });
+            console.log(blobData);
+            const url = URL.createObjectURL(blobData);
+            console.log(url);
+
+            // 產生一個超連結
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "records.json";
+            document.body.appendChild(a);
+            //a.text = "download";
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
 
         deleteRecordBtnEl.addEventListener("click", function () {
             if (!confirm("是否確定刪除?!")) {
